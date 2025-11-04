@@ -1,5 +1,8 @@
 init = function()
   
+  screen.setFont("PixAntiqua")
+
+  
   currState = new GameState()
   currState.init()
 end
