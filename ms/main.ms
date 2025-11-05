@@ -1,6 +1,6 @@
 init = function()
   
-  screen.setFont("PixAntiqua")
+  screen.setFont("EnchantedSword")
 
   
   currState = new GameState()

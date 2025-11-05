@@ -1,4 +1,4 @@
-Level1 = class extends BaseLevel
+Level4 = class extends BaseLevel
   
   constructor = function(gameState)
     super(gameState)
@@ -6,10 +6,11 @@ Level1 = class extends BaseLevel
   
   init = function()
     
-    this.playerShip = new Ship(0, 0)
+    this.playerShip = new Ship(-20, 90)
     this.playerShip.init()
     
     this.isActive = true
+    
   end
 
   update = function()
@@ -22,13 +23,13 @@ Level1 = class extends BaseLevel
       
       this.playerShip.update()
       
-      if this.testMapCollision(this.playerShip.position, this.playerShip.w, this.playerShip.h, "level1") then
-        this.playerShip.drownTimeout(0, 0, 3000)
+      if this.testMapCollision(this.playerShip.position, this.playerShip.w, this.playerShip.h, "level4") then
+        this.playerShip.drownTimeout(-20, 90, 3000)
       end
       
       if this.playerShip.position.y <= (-screen.height / 2) + this.playerShip.h then
         this.isActive = false
-        this.gameState.changeTo("level2")
+        this.gameState.changeTo("level5")
       end
       
     end
@@ -39,10 +40,7 @@ Level1 = class extends BaseLevel
     
     if this.isActive then
       
-      screen.drawMap( "level1", 0, 0, 200, 200 )
-      screen.drawText("1. Click on the position you want to reach", 0, 70, 10, "yellow")
-      screen.drawText("2. Evade anything that isn't water", 0, 50, 10, "yellow")
-      
+      screen.drawMap( "level4", 0, 0, 200, 200 )
       this.playerShip.draw()
     end
   end

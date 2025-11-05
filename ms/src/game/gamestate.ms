@@ -4,14 +4,11 @@ GameState = class
     this.currState = new TitleScreen(this)
     
     this.stateMap = object
-        level1 = new Level1(this)
+        level1 = Level1
+        level2 = Level2
+        level3 = Level3
+        level4 = Level4
     end
-  end
-  
-  changeTo = function (name)
-
-      this.currState = this.stateMap[name]
-      this.currState.init()
   end
 
   init = function()
@@ -25,6 +22,13 @@ GameState = class
   draw = function()
     screen.clear()
     this.currState.draw()
+  end
+  
+  changeTo = function (name)
+
+      delete this.currState
+      this.currState = new this.stateMap[name](this)
+      this.currState.init()
   end
   
 end

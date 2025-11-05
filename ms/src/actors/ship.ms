@@ -37,7 +37,7 @@ Ship = class
     
     if this.state == this.states.DROWNING then
       
-      if system.time() - this.positionTimeout[3] >= this.positionTimeout[2] then
+      if system.time() >= this.positionTimeout[2] then
 
         this.speed = new Vector2(0, 0)
         this.position = new Vector2(this.positionTimeout[0], this.positionTimeout[1])
@@ -46,11 +46,6 @@ Ship = class
       end
     end
     
-  end
-  
-  setPositionTimeout = function(x, y, ms)
-  
-    this.positionTimeout = [x, y, ms, system.time()]
   end
   
   moveTowards = function(pX, pY)
@@ -66,10 +61,11 @@ Ship = class
     
   end
   
-  drown = function()
+  drownTimeout = function(pX, pY, ms)
     
       if this.state != this.states.DROWNING then
         this.state = this.states.DROWNING
+        this.positionTimeout = [pX, pY, system.time() + ms]
       end
       
   end
@@ -78,6 +74,7 @@ Ship = class
     
     if this.state == this.states.ACTIVE or this.states.MOVING then
       screen.drawSprite( "ship1", this.position.x, this.position.y, this.w, this.h)
+      screen.drawLine(this.position.x, this.position.y, mouse.x, mouse.y, "white")
     end
     
     if this.state == this.states.DROWNING then
