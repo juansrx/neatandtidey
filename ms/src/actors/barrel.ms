@@ -10,13 +10,15 @@ Barrel = class
     this.state = this.states.NOT_ACTIVE
     this.position = new Vector2(pX, pY)
     this.speed = new Vector2(vX, vY)
-    this.w = this.h = 12
+    this.w = this.h = 8
     
   end
   
   init = function()
+    
     this.state = this.states.ACTIVE
   end
+  
   
   update = function()
     

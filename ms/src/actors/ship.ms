@@ -12,7 +12,7 @@ Ship = class
   
     this.state = this.states.NOT_ACTIVE
     this.position = new Vector2(pX, pY)
-    this.w = this.h = 12
+    this.w = this.h = 10
     
     this.positionTimeout = []
   end
@@ -27,8 +27,7 @@ Ship = class
       
       local dVector = this.finalPosition - this.position
       if dVector.magnitude() <= 1 then
-        this.speed = new Vector2(0, 0)
-        this.state = this.states.ACTIVE
+        this.stop()
       else
         this.position += this.speed
       end  
@@ -39,9 +38,8 @@ Ship = class
       
       if system.time() >= this.positionTimeout[2] then
 
-        this.speed = new Vector2(0, 0)
+        this.stop()
         this.position = new Vector2(this.positionTimeout[0], this.positionTimeout[1])
-        this.state = this.states.ACTIVE
         this.positionTimeout = []
       end
     end
@@ -61,6 +59,12 @@ Ship = class
     
   end
   
+  stop = function()
+    
+    this.speed = new Vector2(0, 0)
+    this.state = this.states.ACTIVE
+  end
+  
   drownTimeout = function(pX, pY, ms)
     
       if this.state != this.states.DROWNING then
@@ -74,13 +78,13 @@ Ship = class
     
     if this.state == this.states.ACTIVE or this.states.MOVING then
       screen.drawSprite( "ship1", this.position.x, this.position.y, this.w, this.h)
+      
       screen.drawLine(this.position.x, this.position.y, mouse.x, mouse.y, "white")
     end
     
     if this.state == this.states.DROWNING then
       screen.drawSprite( "ship2", this.position.x, this.position.y, this.w, this.h)
     end
-    
     
   end
   
