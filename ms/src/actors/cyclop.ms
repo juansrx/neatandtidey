@@ -48,7 +48,7 @@ Cyclop = class
       for barrel in this.barrelList
       
         barrel.update()
-        if barrel.position.x <= -screen.width / 2 then
+        if abs(barrel.position.x) > screen.width / 2 or abs(barrel.position.y) > screen.height / 2  then
         
           barrel.state = barrel.states.NOT_ACTIVE
         end

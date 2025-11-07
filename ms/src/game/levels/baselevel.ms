@@ -18,6 +18,12 @@ BaseLevel = class
             this.mapHazards.contains(mapHit(positionVector.x + w / 2, positionVector.y + h / 2, mapName))
   end
   
+  testActorCollision = function (actor1, actor2)
+    
+    return collision(actor1.position.x, actor1.position.y, actor1.w, actor1.h, actor2.position.x, actor2.position.y, actor2.w, actor2.h)
+    
+  end
+  
   keepActorInBounds = function (actor)
     
     

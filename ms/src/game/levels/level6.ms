@@ -4,8 +4,8 @@ Level6 = class extends BaseLevel
     super(gameState)
     
     this.cyclopList = [
-      new Cyclop(75, 50, -1, 2000)
-      new Cyclop(-75, -75, 1, 2000)
+      new Cyclop(75, 50, -1, 3000)
+      new Cyclop(-75, -75, 1, 3000)
     ]
     
     this.barrelList = [

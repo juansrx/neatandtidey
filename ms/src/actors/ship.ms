@@ -25,6 +25,10 @@ Ship = class
     
     if this.state == this.states.MOVING then
       
+      // The speed re calculation is needed
+      // to keep the ship "in course"
+      this.speed = this.finalPosition - this.position
+      this.speed.normalise()
       local dVector = this.finalPosition - this.position
       if dVector.magnitude() <= 1 then
         this.stop()
@@ -53,8 +57,6 @@ Ship = class
     end
     
     this.finalPosition = new Vector2(pX, pY)
-    this.speed = this.finalPosition - this.position
-    this.speed.normalise()
     this.state = this.states.MOVING
     
   end
