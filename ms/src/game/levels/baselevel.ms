@@ -4,7 +4,7 @@ BaseLevel = class
     this.isActive = false
     this.gameState = gameState
     
-    this.mapHazards = ["rock1", "rock2", "rock3", "island1", "island2", "green1", "green2", "sunkenship1"]
+    this.mapHazards = ["rock1", "rock2", "rock3", "rock4", "island1", "island2", "green1", "green2", "sunkenship1"]
     
     this.timers = object
     end

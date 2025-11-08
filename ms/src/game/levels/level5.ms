@@ -4,7 +4,7 @@ Level5 = class extends BaseLevel
     super(gameState)
     
     this.cyclopList = [
-      new Cyclop(75, 25, -1, 2000)
+      new Cyclop(75, 25, -1, 2000, new BarrelFactory(75, 25, -0.5, 0))
     ]
   end
   

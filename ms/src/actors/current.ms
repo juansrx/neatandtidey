@@ -49,11 +49,14 @@ Current = class
     if this.state == this.states.ACTIVE then
       
       local spriteMap = object
-        "0" = "current2"
-        "1" = "current1"
+        "0" = [-1, 1]
+        "1" = [1, 1]
       end
       
-      screen.drawSprite(spriteMap[this.direction], this.position.x, this.position.y, this.w, this.h)
+      
+      screen.setDrawScale(spriteMap[this.direction][0], spriteMap[this.direction][1])
+      screen.drawSprite("current1", this.position.x, this.position.y, this.w, this.h)
+      screen.setDrawScale(1, 1)
       
     end
   end

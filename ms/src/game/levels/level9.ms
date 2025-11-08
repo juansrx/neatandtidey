@@ -1,39 +1,25 @@
-Level7 = class extends BaseLevel
+Level9 = class extends BaseLevel
   
   constructor = function(gameState)
     super(gameState)
     
     this.cyclopList = [
-      new Cyclop(75, 50, -1, 3000, new BarrelFactory(75, 50, -0.5, 0))
-      new Cyclop(75, 38, -1, 3000, new BarrelFactory(75, 38, -0.5, 0))
+      new Cyclop(0, 50, -1, 1000, new BarrelFactory(0, 50, -1, 0))
+      new Cyclop(25, 50, 1, 1000, new BarrelFactory(25, 50, 1, 0))
     ]
     
-    this.currentList = [
-      new Current(-25, -25, 1)
-      new Current(-37, -25, 1)
-      new Current(-49, -25, 1)
-      new Current(-61, -25, 1)
-      
-      new Current(-25, -37, 1)
-      new Current(-37, -37, 1)
-      new Current(-49, -37, 1)
-      new Current(-61, -37, 1)
-      
-      new Current(-25, -49, 1)
-      new Current(-37, -49, 1)
-      new Current(-49, -49, 1)
-      new Current(-61, -49, 1)
-      
-      new Current(-25, -61, 1)
-      new Current(-37, -61, 1)
-      new Current(-49, -61, 1)
-      new Current(-61, -61, 1)
-    ]
+    this.currentList = []
+    
+    for j = 0 to 4
+        
+      this.currentList.push(new Current(-12 + (j * 12), -25, 1))
+    end
+    
   end
   
   init = function()
     
-    this.playerShip = new Ship(-70, 90)
+    this.playerShip = new Ship(-66, 90)
     this.playerShip.init()
     
     for cyclop in this.cyclopList
@@ -84,16 +70,16 @@ Level7 = class extends BaseLevel
       this.testPlayerInCurrent()
       
       if spriteCollision("barrel1", "ship1") then
-        this.playerShip.drownTimeout(-70, 90, 3000)
+        this.playerShip.drownTimeout(-66, 90, 3000)
       end
       
-      if this.testMapCollision(this.playerShip.position, this.playerShip.w, this.playerShip.h, "level7") then
-        this.playerShip.drownTimeout(-70, 90, 3000)
+      if this.testMapCollision(this.playerShip.position, this.playerShip.w, this.playerShip.h, "level9") then
+        this.playerShip.drownTimeout(-66, 90, 3000)
       end
       
       if this.playerShip.position.y <= (-screen.height / 2) + this.playerShip.h then
         this.isActive = false
-        this.gameState.changeTo("level8")
+        this.gameState.changeTo("level10")
       end
       
       
@@ -107,7 +93,7 @@ Level7 = class extends BaseLevel
     
     if this.isActive then
       
-      screen.drawMap( "level7", 0, 0, 200, 200 )
+      screen.drawMap( "level9", 0, 0, 200, 200 )
       
       for cyclop in this.cyclopList
         cyclop.draw()
@@ -117,7 +103,8 @@ Level7 = class extends BaseLevel
         current.draw()
       end
       
-      screen.drawText("Watch out for the current!", 0, 70, 10, "yellow")
+      screen.drawText("Slow pace is the key, sometimes", 0, 85, 10, "yellow")
+      
       this.playerShip.draw()
     end
   end

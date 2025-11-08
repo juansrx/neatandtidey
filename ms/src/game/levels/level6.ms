@@ -4,13 +4,10 @@ Level6 = class extends BaseLevel
     super(gameState)
     
     this.cyclopList = [
-      new Cyclop(75, 50, -1, 3000)
-      new Cyclop(-75, -75, 1, 3000)
+      new Cyclop(75, 50, -1, 3000, new BarrelFactory(75, 50, -0.5, 0))
+      new Cyclop(-75, -75, 1, 3000, new BarrelFactory(-75, -75, 0.5, 0))
     ]
     
-    this.barrelList = [
-      
-    ]
   end
   
   init = function()
@@ -31,19 +28,6 @@ Level6 = class extends BaseLevel
     for cyclop in this.cyclopList
       
       cyclop.update()
-    end
-    
-  end
-  
-  updateBarrels = function()
-    
-    for barrel in this.barrelList
-      
-      if abs(barrel.position.x) >= screen.width / 2 then
-        barrel.speed.x = -barrel.speed.x
-      end
-      
-      barrel.update()
     end
     
   end

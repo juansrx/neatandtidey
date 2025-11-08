@@ -1,6 +1,6 @@
 Cyclop = class
   
-  constructor = function(pX, pY, dir, throwMs)
+  constructor = function(pX, pY, dir, throwMs, barrelFactory)
   
     this.states = object
       NOT_ACTIVE = 0
@@ -18,15 +18,7 @@ Cyclop = class
     this.throwMs = throwMs
     this.direction = dir
     
-    this.barrelList = []
-  end
-  
-  throwBarrel = function()
-    
-    local barrel = new Barrel(this.position.x, this.position.y, 0.5 * this.direction, 0)
-    barrel.init()
-    this.barrelList.push(barrel)
-    
+    this.barrelFactory = barrelFactory
   end
   
   init = function()
@@ -41,20 +33,11 @@ Cyclop = class
       
       if system.time() >= this.throwMs + this.throwTimer then
         
-        this.throwBarrel()
+        this.barrelFactory.createBarrel()
         this.throwTimer = system.time()
       end
   
-      for barrel in this.barrelList
-      
-        barrel.update()
-        if abs(barrel.position.x) > screen.width / 2 or abs(barrel.position.y) > screen.height / 2  then
-        
-          barrel.state = barrel.states.NOT_ACTIVE
-        end
-      end
-    
-      this.barrelList = this.barrelList.filter(function(barrel) return barrel.state != barrel.states.NOT_ACTIVE end)
+      this.barrelFactory.updateBarrelList()
     end
     
   end
@@ -70,10 +53,7 @@ Cyclop = class
       
       screen.drawSprite(spriteMap[this.direction], this.position.x, this.position.y, this.w, this.h)
       
-      for barrel in this.barrelList
-        
-        barrel.draw()
-      end
+      this.barrelFactory.drawBarrelList()
     end
     
   end
