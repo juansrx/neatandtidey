@@ -10,6 +10,8 @@ Current = class
     this.directions = object
       RIGHT = 0
       LEFT = 1
+      UP = 2
+      DOWN = 3
     end
     
     this.state = this.states.NOT_ACTIVE
@@ -35,6 +37,8 @@ Current = class
       local forceMap = object
         "0" = [0.5, 0]
         "1" = [-0.5, 0]
+        "2" = [0, 0.5]
+        "3" = [0, -0.5]
       end
       
       //actor.position.y = this.position.y
@@ -51,6 +55,8 @@ Current = class
       local spriteMap = object
         "0" = [-1, 1]
         "1" = [1, 1]
+        "2" = [-1, 1]
+        "3" = [1, 1]
       end
       
       
