@@ -59,10 +59,18 @@ Current = class
         "3" = [1, 1]
       end
       
+      if this.direction == this.directions.UP then
+        screen.setDrawRotation(90)
+      end
+      
+      if this.direction == this.directions.DOWN then
+        screen.setDrawRotation(270)
+      end
       
       screen.setDrawScale(spriteMap[this.direction][0], spriteMap[this.direction][1])
       screen.drawSprite("current1", this.position.x, this.position.y, this.w, this.h)
       screen.setDrawScale(1, 1)
+      screen.setDrawRotation(0)
       
     end
   end
