@@ -149,7 +149,7 @@ Level14 = class extends BaseLevel
         current.draw()
       end
       
-      //this.light.draw()
+      this.light.draw()
       
       this.playerShip.draw()
     end
