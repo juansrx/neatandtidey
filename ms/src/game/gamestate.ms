@@ -22,6 +22,7 @@ GameState = class
         level16 = Level16
         level17 = Level17
         level18 = Level18
+        level19 = Level19
         greece = Greece
     end
   end

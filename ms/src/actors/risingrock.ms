@@ -18,6 +18,7 @@ RisingRock = class
     this.position = new Vector2(pX, pY)
     this.w = this.h = 12
     this.direction = dir
+    this.currSound = false
     
     // fromState -> startTime, durationOfState, toState
     this.timersByState = object
@@ -60,6 +61,20 @@ RisingRock = class
         this.currentSprite = this.spritesByState[this.state][0]
       end
       
+    end
+    
+    // Keep playing in loop while state is RISING
+    if this.state == this.states.RISING then
+      
+      if this.currSound == false then
+        this.currSound = audio.playSound("splash1", 1, 1, 0, 1)
+      end
+      
+    else
+      if this.currSound != false then
+        this.currSound.stop()
+        this.currSound = false
+      end
     end
     
   end
