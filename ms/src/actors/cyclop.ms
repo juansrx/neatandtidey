@@ -23,7 +23,7 @@ Cyclop = class
   
   init = function()
     
-    this.throwTimer = 0
+    this.throwTimer = system.time()
     this.state = this.states.ACTIVE
   end
   
