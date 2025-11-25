@@ -13,8 +13,14 @@ https://microstudio.dev/
 
 Libraries used:
 
-Collisions by microStudio 
-
 Collisions by microStudio https://microstudio.dev/i/microstudio/collisions/
-
 Vector2 by PaulSt https://microstudio.dev/i/PaulSt/vector2/
+
+Music Used:
+
+Author: Eric Skiff
+Song Name: Resistor Anthems
+Available at: http://EricSkiff.com/music"
+Released under the Creative Commons
+Attribution 4.0 (CC-BY) license
+https://creativecommons.org/licenses/by/4.0/

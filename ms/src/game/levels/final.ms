@@ -6,29 +6,64 @@ Final = class extends BaseLevel
   
   init = function()
     
-    this.playerShip = new Ship(80, 0)
+    this.playerShip = new Ship(0, 80)
     this.playerShip.init()
     
-    this.isActive = true
+    local me = this
+    
+    local assetManager = asset_manager.loadJSON(
+      "credits", 
+      function (obj)
+        
+        me.credits = obj.frames
+        me.isActive = true
+        me.inCredits = false
+      end
+    )
+    
+    while not assetManager
+    end
+    
+  end
+  
+  
+  rollCredits = function()
+    
+    this.currCredit = 0
+    this.timers['credits'] = system.time()
+    this.inCredits = true
   end
 
   update = function()
     
     if this.isActive then
     
-      if mouse.release then
-        this.playerShip.moveTowards(mouse.x, mouse.y)
-      end
-      
+      this.playerShip.moveTowards(0, -5)
       this.playerShip.update()
       
-      if this.testMapCollision(this.playerShip.position, this.playerShip.w, this.playerShip.h, "level1") then
-        this.playerShip.drownTimeout(0, 0, 3000)
+      if this.playerShip.position.y <= 0 and not this.inCredits then
+        
+        this.rollCredits()
       end
       
-      if this.playerShip.position.y <= (-screen.height / 2) + this.playerShip.h then
-        this.isActive = false
-        this.gameState.changeTo("level24")
+      if this.inCredits then
+        
+        this.updateCredits()
+      end
+      
+    end
+    
+    
+  end
+
+  updateCredits = function()
+    
+    if this.currCredit < this.credits.length then
+      
+      if system.time() - this.timers['credits'] >= this.credits[this.currCredit].duration then
+        
+        this.currCredit+=1
+        this.timers['credits'] = system.time()
       end
       
     end
@@ -39,12 +74,23 @@ Final = class extends BaseLevel
     
     if this.isActive then
       
-      screen.drawMap( "level1", 0, 0, 200, 200 )
-      screen.drawText("1. Click on the position you want to reach", 0, 70, 10, "yellow")
-      screen.drawText("2. Evade anything that isn't water", 0, 50, 10, "yellow")
+      screen.drawMap( "final", 0, 0, 200, 200 )
       
       this.playerShip.draw()
+      
+      if this.inCredits then 
+        
+        local i = 0
+        for t in this.credits[this.currCredit].text
+          
+          screen.drawText(t, 0, 80 - i, 10, "red")
+          i += 10
+        end
+        
+      end
+    
     end
+    
   end
   
 end

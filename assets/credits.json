@@ -1,0 +1,78 @@
+{
+	"frames": [
+		{
+			"duration": 5000,
+			"text": [
+				"I think we are going to need a bigger pan"
+			]
+		},
+		{
+			"duration": 5000,
+			"text": [
+				"Coding: ",
+				"==========",
+				"juansrx",
+				"",
+				"Graphics",
+				"==========",
+				"juansrx",
+				"",
+				"Sound Effects",
+				"==========",
+				"juansrx",
+				"",
+				"",
+				"Collisions Library made by microStudio",
+				"",
+				"Vector2 Library V1.0 made by PaulSt",
+				"",
+				"(0)"
+			]
+		},
+		{
+			"duration": 6000,
+			"text": [
+				"Music Used:",
+				"==========",
+				"Author: Eric Skiff",
+				"",
+				"Song Name: Resistor Anthems",
+				"",
+				"Available at: http://EricSkiff.com/music",
+				"",
+				"Released under the Creative Commons",
+				"Attribution 4.0 (CC-BY) license",
+				"",
+				"https://creativecommons.org/licenses/by/4.0/"
+			]
+		},
+		{
+			"duration": 8000,
+			"text": [
+				"Neat and Tidey:",
+				"==========",
+				"Created used microStudio 24.1.29 by Gilles", 
+				"Pommereuil",
+				"",
+				"Entry for the GitHub Game Off 2025",
+				"",
+				"https://itch.io/jam/game-off-2025",
+				"",
+				"Source can be found on:",
+				"",
+				"https://github.com/juansrx/neatandtidey"
+			]
+		},
+		{
+			"duration": 8000,
+			"text": [
+				"",
+				"******************************",
+				"",
+				"Thank you for Playing!",
+				"",
+				"******************************"
+			]
+		}
+	]
+}
