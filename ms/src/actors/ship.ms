@@ -34,11 +34,15 @@ Ship = class
         this.stop()
       else
         this.position += this.speed
-      end  
+      end
+      
+      audio.playSound("splash2", 1, 1)
         
     end
     
     if this.state == this.states.DROWNING then
+      
+      audio.playSound("crash1", 1, 1)
       
       if system.time() >= this.positionTimeout[2] then
 

@@ -5,8 +5,8 @@ Level23 = class extends BaseLevel
     
     this.playerShip = new Ship(0, 80)
     this.dragonList = [
-      new Dragon([[-48, -60]], 1, 5000, new FireballFactory(0, 0, 2, this.playerShip))
-      new Dragon([[48, -60]], 1, 5000, new FireballFactory(0, 0, 2, this.playerShip))
+      new Dragon([[-48, -60]], 1, 6000, new FireballFactory(0, 0, 1, this.playerShip))
+      new Dragon([[48, -60]], 1, 6000, new FireballFactory(0, 0, 1, this.playerShip))
     ]
   end
   

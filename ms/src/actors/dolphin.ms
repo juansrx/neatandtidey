@@ -69,6 +69,12 @@ Dolphin = class
       this.position += this.speed
     end
     
+    // Keep playing in loop while state is RISING
+    if this.state == this.states.RISING then
+      
+        audio.playSound("splash1", 0.5, 1)
+    end
+    
   end
   
   draw = function()

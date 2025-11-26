@@ -76,6 +76,7 @@ Dragon = class
         this.fireballFactory.position = this.position * 1
         this.fireballFactory.createFireball()
         this.throwTimer = system.time()
+        audio.playSound("fireball1", 0.5, 1)
       end
   
       this.fireballFactory.updateFireballList()

@@ -3,6 +3,15 @@ GameState = class
   constructor = function()
     this.currState = new TitleScreen(this)
     
+    this.songList = [
+      "01anightofdizzyspells",
+      "04allofus",
+      "05comeandfindme",
+      "10arpanauts",
+      "14jumpshot",
+      "17behindthewaterfallliesthebeg"
+    ]
+    
     this.stateMap = object
         level1 = Level1
         level2 = Level2
@@ -32,25 +41,44 @@ GameState = class
         greece = Greece
     end
   end
+  
+  startPlaylist = function ()
+    
+    this.currMusic = audio.playMusic(this.songList[0], 0.5)
+  end
+  
+  updatePlaylist = function ()
+    
+    if this.currMusic.getPosition() == this.currMusic.getDuration() then
+      
+      this.currMusic.stop()
+      this.currMusic = audio.playMusic(this.songList[random.nextInt(this.songList.length)])
+    end
+  end
 
   init = function()
+    
+    this.startPlaylist()
     this.currState.init()
   end
 
   update = function()
+    
     this.currState.update()
+    this.updatePlaylist()
   end
 
   draw = function()
+    
     screen.clear()
     this.currState.draw()
   end
   
   changeTo = function (name)
 
-      delete this.currState
-      this.currState = new this.stateMap[name](this)
-      this.currState.init()
+    delete this.currState
+    this.currState = new this.stateMap[name](this)
+    this.currState.init()
   end
   
 end

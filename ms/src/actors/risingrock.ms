@@ -66,15 +66,7 @@ RisingRock = class
     // Keep playing in loop while state is RISING
     if this.state == this.states.RISING then
       
-      if this.currSound == false then
-        this.currSound = audio.playSound("splash1", 1, 1, 0, 1)
-      end
-      
-    else
-      if this.currSound != false then
-        this.currSound.stop()
-        this.currSound = false
-      end
+        audio.playSound("splash1", 0.5, 1)
     end
     
   end

@@ -35,6 +35,7 @@ Cyclop = class
         
         this.barrelFactory.createBarrel()
         this.throwTimer = system.time()
+        audio.playSound("throw1", 0.1, 1)
       end
   
       this.barrelFactory.updateBarrelList()
